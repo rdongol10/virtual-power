@@ -5,7 +5,7 @@ import java.util.Objects;
 public class BatteryRequest implements Request {
     private Long serialNumber;
     private String name;
-    private String postcode;
+    private String postCode;
     private int wattCapacity;
 
     public Long getSerialNumber() {
@@ -24,12 +24,12 @@ public class BatteryRequest implements Request {
         this.name = name;
     }
 
-    public String getPostcode() {
-        return postcode;
+    public String getPostCode() {
+        return postCode;
     }
 
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
     }
 
     public int getWattCapacity() {
@@ -43,17 +43,16 @@ public class BatteryRequest implements Request {
     @Override
     public int hashCode() {
 
-        return (name == null ? 0 : name.hashCode()) +
-                (postcode == null ? 0 : postcode.hashCode());
+        return (name == null ? 0 : name.hashCode());
 
     }
+
     @Override
     public boolean equals(Object obj) {
 
         if (this == obj) return true;
         if (!(obj instanceof BatteryRequest)) return false;
         BatteryRequest that = (BatteryRequest) obj;
-        return Objects.equals(name, that.name) &&
-                Objects.equals(postcode, that.postcode);
+        return Objects.equals(name, that.name);
     }
 }
