@@ -2,7 +2,7 @@ package com.rdongol.virtualpower.controller;
 
 import com.rdongol.virtualpower.model.request.BatteryRequest;
 import com.rdongol.virtualpower.model.response.RestResponse;
-import com.rdongol.virtualpower.service.BatteryProcessor;
+import com.rdongol.virtualpower.service.BatterSaveHelper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,16 +12,16 @@ import java.util.List;
 @RequestMapping(path = "/battery")
 public class BatteryController {
 
-    private final BatteryProcessor batteryProcessor;
+    private final BatterSaveHelper batterSaveHelper;
 
 
-    public BatteryController(BatteryProcessor batteryProcessor) {
-        this.batteryProcessor = batteryProcessor;
+    public BatteryController(BatterSaveHelper batterSaveHelper) {
+        this.batterSaveHelper = batterSaveHelper;
     }
 
     @PostMapping
     public ResponseEntity<RestResponse> add(@RequestBody List<BatteryRequest> batteryRequests) {
-        this.batteryProcessor.processBatteries(batteryRequests);
+        this.batterSaveHelper.processBatteries(batteryRequests);
         return ResponseEntity.ok(new RestResponse("Saved", "saved"));
     }
 

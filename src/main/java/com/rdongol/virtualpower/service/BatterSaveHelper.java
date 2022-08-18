@@ -13,12 +13,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class BatteryProcessor {
+public class BatterSaveHelper {
 
     private List<String> errors;
     private final BatteryService batteryService;
 
-    public BatteryProcessor(BatteryService batteryService) {
+    public BatterSaveHelper(BatteryService batteryService) {
         this.batteryService = batteryService;
     }
 
