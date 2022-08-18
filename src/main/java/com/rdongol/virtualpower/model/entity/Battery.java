@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 public class Battery extends BaseEntity {
 
     private String name;
-    private String postcode;
+    private String postCode;
     private int wattCapacity;
 
     public String getName() {
@@ -17,12 +17,12 @@ public class Battery extends BaseEntity {
         this.name = name;
     }
 
-    public String getPostcode() {
-        return postcode;
+    public String getPostCode() {
+        return postCode;
     }
 
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
     }
 
     public int getWattCapacity() {
