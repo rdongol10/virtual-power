@@ -1,5 +1,7 @@
 package com.rdongol.virtualpower.model.request;
 
+import java.util.Objects;
+
 public class BatteryRequest implements Request {
     private Long serialNumber;
     private String name;
@@ -36,5 +38,22 @@ public class BatteryRequest implements Request {
 
     public void setWattCapacity(int wattCapacity) {
         this.wattCapacity = wattCapacity;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return (name == null ? 0 : name.hashCode()) +
+                (postcode == null ? 0 : postcode.hashCode());
+
+    }
+    @Override
+    public boolean equals(Object obj) {
+
+        if (this == obj) return true;
+        if (!(obj instanceof BatteryRequest)) return false;
+        BatteryRequest that = (BatteryRequest) obj;
+        return Objects.equals(name, that.name) &&
+                Objects.equals(postcode, that.postcode);
     }
 }

@@ -21,4 +21,9 @@ public class BatteryServiceImpl implements BatteryService {
     public List<Battery> saveAll(List<Battery> batteries) {
         return this.batteryRepository.saveAll(batteries);
     }
+
+    @Override
+    public boolean existsByPostCodeAndName(String postcode, String name) {
+        return this.batteryRepository.existsByPostCodeAndName(postcode, name);
+    }
 }

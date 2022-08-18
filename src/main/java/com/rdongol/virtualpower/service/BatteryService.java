@@ -7,4 +7,6 @@ import java.util.List;
 public interface BatteryService {
 
     List<Battery> saveAll(List<Battery> batteries);
+
+    boolean existsByPostCodeAndName(String postcode, String name);
 }
