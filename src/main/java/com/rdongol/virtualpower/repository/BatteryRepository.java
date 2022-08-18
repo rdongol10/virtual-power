@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BatteryRepository extends JpaRepository<Battery, Long> {
 
-    boolean existsByPostCodeAndName(String postcode, String name);
+    boolean existsByName( String name);
 
 }

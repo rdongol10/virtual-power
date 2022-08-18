@@ -23,7 +23,7 @@ public class BatteryServiceImpl implements BatteryService {
     }
 
     @Override
-    public boolean existsByPostCodeAndName(String postcode, String name) {
-        return this.batteryRepository.existsByPostCodeAndName(postcode, name);
+    public boolean existsByName(String name) {
+        return this.batteryRepository.existsByName(name);
     }
 }
