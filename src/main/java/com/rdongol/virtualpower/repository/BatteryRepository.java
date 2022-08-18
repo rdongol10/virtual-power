@@ -10,8 +10,8 @@ import java.util.List;
 @Repository
 public interface BatteryRepository extends JpaRepository<Battery, Long> {
 
-    boolean existsByName( String name);
+    boolean existsByName(String name);
 
-    @Query("Select b from Battery b where b.postCode in :postCodes" )
+    @Query("Select b from Battery b where b.postCode in :postCodes")
     List<Battery> findByPostCodes(List<String> postCodes);
 }
