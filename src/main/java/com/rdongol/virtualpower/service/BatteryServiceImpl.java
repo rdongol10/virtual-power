@@ -26,4 +26,9 @@ public class BatteryServiceImpl implements BatteryService {
     public boolean existsByName(String name) {
         return this.batteryRepository.existsByName(name);
     }
+
+    @Override
+    public List<Battery> findByPostcodes(List<String> postCodes) {
+        return this.batteryRepository.findByPostCodes(postCodes);
+    }
 }

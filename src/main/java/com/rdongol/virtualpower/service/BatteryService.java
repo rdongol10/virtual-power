@@ -10,4 +10,6 @@ public interface BatteryService {
 
     boolean existsByName(String name);
 
+    List<Battery> findByPostcodes(List<String> postCodes);
+
 }
