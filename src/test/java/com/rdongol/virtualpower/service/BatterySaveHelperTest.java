@@ -27,12 +27,12 @@ public class BatterySaveHelperTest {
 
     @InjectMocks
     BatterySaveHelper batterySaveHelper;
+    @Mock
+    BatteryService batteryService;
 
     List<BatteryRequest> requestList;
     List<Battery> responseList;
 
-    @Mock
-    BatteryService batteryService;
 
     private void initializeValidationFailEntity() {
         requestList = new ArrayList<>();
