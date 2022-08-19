@@ -37,9 +37,9 @@ public class BatteryListHelper {
             return getEmptyBatteryResponse();
         }
 
-        List<String> batteryNames = batteries.stream().map(battery -> battery.getName()).sorted().collect(Collectors.toList());
-        long totalWatts = batteries.stream().mapToInt(battery -> battery.getWattCapacity()).sum();
-        double averageWatts = totalWatts / batteries.size();
+        List<String> batteryNames = batteries.stream().map(Battery::getName).sorted().collect(Collectors.toList());
+        long totalWatts = batteries.stream().mapToInt(Battery::getWattCapacity).sum();
+        double averageWatts = ((double) totalWatts) / batteries.size();
 
 
         return new BatteriesResponse(batteryNames, totalWatts, averageWatts);
