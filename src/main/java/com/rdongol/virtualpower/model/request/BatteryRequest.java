@@ -3,18 +3,9 @@ package com.rdongol.virtualpower.model.request;
 import java.util.Objects;
 
 public class BatteryRequest implements Request {
-    private Long serialNumber;
     private String name;
     private String postCode;
     private int wattCapacity;
-
-    public Long getSerialNumber() {
-        return serialNumber;
-    }
-
-    public void setSerialNumber(Long serialNumber) {
-        this.serialNumber = serialNumber;
-    }
 
     public String getName() {
         return name;
