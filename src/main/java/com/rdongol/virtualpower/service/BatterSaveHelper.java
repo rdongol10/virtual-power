@@ -24,18 +24,19 @@ public class BatterSaveHelper {
 
     public List<Battery> processBatteries(List<BatteryRequest> batteryRequests) {
 
-        batteryRequests = this.removeDuplicate(batteryRequests);
         this.validateBatteryRequests(batteryRequests);
+
+        if (!this.errors.isEmpty()) {
+            throw new UnProcessableEntityException(this.errors, "Un processable entity");
+        }
+
+        batteryRequests = this.removeDuplicate(batteryRequests);
 
         List<Battery> batteries = batteryRequests.stream().map(
                         fromValue -> Utils.mapObject(fromValue, Battery.class))
                 .collect(Collectors.toList());
 
-        if (this.errors.isEmpty()) {
-            return this.batteryService.saveAll(batteries);
-        } else {
-            throw new UnProcessableEntityException(this.errors, "Un processable entity");
-        }
+        return this.batteryService.saveAll(batteries);
     }
 
     private List<BatteryRequest> removeDuplicate(List<BatteryRequest> batteryRequests) {
@@ -46,17 +47,16 @@ public class BatterSaveHelper {
         errors = new ArrayList<>();
         int count = 1;
         for (BatteryRequest batteryRequest : batteryRequests) {
-            long sequenceNumber = batteryRequest.getSerialNumber() != null ? batteryRequest.getSerialNumber() : count;
             if (StringUtils.isEmpty(batteryRequest.getName())) {
-                errors.add("Name is missing for entity for " + sequenceNumber + " element ");
+                errors.add("Name is missing for entity at position " + count);
             }
 
             if (StringUtils.isEmpty(batteryRequest.getPostCode())) {
-                errors.add("Post Code is missing for " + sequenceNumber + " element ");
+                errors.add("Post Code is missing for entity at position " + count);
             }
 
             if (batteryRequest.getWattCapacity() <= 0) {
-                errors.add("Watt capacity is less than 0 for  " + sequenceNumber + " element ");
+                errors.add("Watt capacity is less than 0 for entity at position " + count);
             }
 
             if (StringUtils.isNotEmpty(batteryRequest.getPostCode()) &&
@@ -65,6 +65,8 @@ public class BatterSaveHelper {
             ) {
                 errors.add("Name:" + batteryRequest.getName() + " already exists");
             }
+
+            count++;
         }
     }
 
