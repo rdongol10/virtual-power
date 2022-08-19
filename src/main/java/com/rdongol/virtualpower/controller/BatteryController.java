@@ -5,7 +5,7 @@ import com.rdongol.virtualpower.model.request.BatteryRequest;
 import com.rdongol.virtualpower.model.request.PostCodeRequest;
 import com.rdongol.virtualpower.model.response.RestDataResponse;
 import com.rdongol.virtualpower.model.response.RestResponse;
-import com.rdongol.virtualpower.service.BatterSaveHelper;
+import com.rdongol.virtualpower.service.BatterySaveHelper;
 import com.rdongol.virtualpower.service.BatteryListHelper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,18 +19,18 @@ import java.util.List;
 @RequestMapping(path = "/battery")
 public class BatteryController {
 
-    private final BatterSaveHelper batterSaveHelper;
+    private final BatterySaveHelper batterySaveHelper;
 
     private final BatteryListHelper batteryListHelper;
 
-    public BatteryController(BatterSaveHelper batterSaveHelper, BatteryListHelper batteryListHelper) {
-        this.batterSaveHelper = batterSaveHelper;
+    public BatteryController(BatterySaveHelper batterySaveHelper, BatteryListHelper batteryListHelper) {
+        this.batterySaveHelper = batterySaveHelper;
         this.batteryListHelper = batteryListHelper;
     }
 
     @PostMapping
     public ResponseEntity<RestResponse> add(@RequestBody List<BatteryRequest> batteryRequests) {
-        this.batterSaveHelper.processBatteries(batteryRequests);
+        this.batterySaveHelper.processBatteries(batteryRequests);
         return ResponseEntity.ok(new RestResponse(SuccessMessage.SAVED.getCode(), SuccessMessage.SAVED.getMessage()));
     }
 

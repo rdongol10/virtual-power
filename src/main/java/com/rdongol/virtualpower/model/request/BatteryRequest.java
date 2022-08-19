@@ -7,6 +7,12 @@ public class BatteryRequest implements Request {
     private String postCode;
     private int wattCapacity;
 
+    public BatteryRequest(String name, String postCode, int wattCapacity) {
+        this.name = name;
+        this.postCode = postCode;
+        this.wattCapacity = wattCapacity;
+    }
+
     public String getName() {
         return name;
     }

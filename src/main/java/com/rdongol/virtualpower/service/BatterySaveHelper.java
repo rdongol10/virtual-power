@@ -13,12 +13,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class BatterSaveHelper {
+public class BatterySaveHelper {
 
     private List<String> errors;
     private final BatteryService batteryService;
 
-    public BatterSaveHelper(BatteryService batteryService) {
+    public BatterySaveHelper(BatteryService batteryService) {
         this.batteryService = batteryService;
     }
 
@@ -56,7 +56,7 @@ public class BatterSaveHelper {
             }
 
             if (batteryRequest.getWattCapacity() <= 0) {
-                errors.add("Watt capacity is less than 0 for entity at position " + count);
+                errors.add("Watt is invalid at position " + count);
             }
 
             if (StringUtils.isNotEmpty(batteryRequest.getPostCode()) &&
