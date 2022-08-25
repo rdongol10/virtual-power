@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "de7f2f92-f69f-460d-9db1-bc8ea3acdee0",
+		"name": "virtual-power",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12730888"
+	},
+	"item": [
+		{
+			"name": "battery",
+			"item": [
+				{
+					"name": "saveBatteries",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"name\":\"test\",\r\n        \"postCode\":\"1\",\r\n        \"wattCapacity\":100\r\n    },\r\n    {\r\n        \"name\":\"test\",\r\n        \"postCode\":\"2\",\r\n        \"wattCapacity\":50\r\n    },\r\n    {\r\n        \"name\":\"test2\",\r\n        \"postCode\":\"1\",\r\n        \"wattCapacity\":60\r\n    },\r\n    {\r\n        \"name\":\"test3\",\r\n        \"postCode\":\"2\",\r\n        \"wattCapacity\":1\r\n    },\r\n    {\r\n        \"name\":\"test4\",\r\n        \"postCode\":\"3\",\r\n        \"wattCapacity\":1.5\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://virtual-power.herokuapp.com/battery",
+							"protocol": "https",
+							"host": [
+								"virtual-power",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"battery"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAll",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"postCodes\": [\"1\",\"2\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://virtual-power.herokuapp.com/battery/findByPostCodes",
+							"protocol": "https",
+							"host": [
+								"virtual-power",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"battery",
+								"findByPostCodes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
